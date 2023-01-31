@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/store/postgres"
+)
 
 func main() {
 	conn, err := postgres.New(postgres.Settings{})
