@@ -7,7 +7,6 @@ func getNumbers(input string) string {
 		if t >= 48 && t <= 57 { // 48 - 57 in ASCII this numbers   0-9
 			number += string(t)
 		}
-
 	}
 
 	return number
