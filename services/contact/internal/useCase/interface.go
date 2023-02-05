@@ -1,7 +1,7 @@
 package useCase
 
 import (
-	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/store/type/queryParameter"
+	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/type/queryParameter"
 	"github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/domain/contact"
 	"github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/domain/group"
 	"github.com/google/uuid"

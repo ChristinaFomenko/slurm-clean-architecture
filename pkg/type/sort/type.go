@@ -1,6 +1,8 @@
 package sort
 
-import "github.com/ChristinaFomenko/slurm-clean-architecture/pkg/store/type/columnCode"
+import (
+	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/type/columnCode"
+)
 
 type Sort struct {
 	Key columnCode.ColumnCode

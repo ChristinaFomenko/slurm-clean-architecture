@@ -1,8 +1,8 @@
 package queryParameter
 
 import (
-	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/store/type/pagination"
-	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/store/type/sort"
+	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/type/pagination"
+	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/type/sort"
 )
 
 type QueryParameter struct {
