@@ -11,13 +11,13 @@ type Description struct {
 	value string
 }
 
-func (d Description) Value() string {
-	return d.value
-}
-
 func New(description string) (Description, error) {
 	if len([]rune(description)) > MaxLength {
 		return Description{}, ErrWrongLength
 	}
 	return Description{value: description}, nil
+}
+
+func (d Description) Value() string {
+	return d.value
 }

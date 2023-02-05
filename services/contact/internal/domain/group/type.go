@@ -1,10 +1,12 @@
 package group
 
 import (
+	"time"
+
+	"github.com/google/uuid"
+
 	"github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/domain/group/description"
 	"github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/domain/group/name"
-	"github.com/google/uuid"
-	"time"
 )
 
 type Group struct {
@@ -16,16 +18,11 @@ type Group struct {
 	contactCount uint64
 }
 
-func NewWithID(id uuid.UUID,
-	createdAt time.Time,
-	modifiedAt time.Time,
-	name name.Name,
-	description description.Description,
-	contactCount uint64) *Group {
+func NewWithID(id uuid.UUID, createdAt time.Time, modifiedAt time.Time, name name.Name, description description.Description, contactCount uint64) *Group {
 	return &Group{
 		id:           id,
-		createdAt:    createdAt,
-		modifiedAt:   modifiedAt,
+		createdAt:    createdAt.UTC(),
+		modifiedAt:   modifiedAt.UTC(),
 		name:         name,
 		description:  description,
 		contactCount: contactCount,

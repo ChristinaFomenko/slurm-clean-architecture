@@ -1,6 +1,8 @@
 package name
 
-import "github.com/pkg/errors"
+import (
+	"github.com/pkg/errors"
+)
 
 var (
 	MaxLength      = 250
@@ -11,13 +13,13 @@ type Name struct {
 	value string
 }
 
-func (d Name) Value() string {
-	return d.value
-}
-
-func New(description string) (Name, error) {
-	if len([]rune(description)) > MaxLength {
+func New(name string) (Name, error) {
+	if len([]rune(name)) > MaxLength {
 		return Name{}, ErrWrongLength
 	}
-	return Name{value: description}, nil
+	return Name{value: name}, nil
+}
+
+func (n Name) Value() string {
+	return n.value
 }
