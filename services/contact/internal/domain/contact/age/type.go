@@ -1,8 +1,9 @@
 package age
 
 import (
-	"github.com/pkg/errors"
 	"strconv"
+
+	"github.com/pkg/errors"
 )
 
 var (
