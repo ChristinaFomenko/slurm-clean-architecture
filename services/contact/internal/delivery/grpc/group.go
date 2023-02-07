@@ -3,7 +3,7 @@ package grpc
 import (
 	"context"
 
-	contact "architecture_go/services/contact/internal/delivery/grpc/interface"
+	contact "github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/delivery/grpc/interface"
 )
 
 func (d *Delivery) CreateGroup(ctx context.Context, request *contact.CreateGroupRequest) (*contact.CreateGroupResponse, error) {
