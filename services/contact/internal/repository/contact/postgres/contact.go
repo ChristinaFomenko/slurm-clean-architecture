@@ -2,13 +2,14 @@ package postgres
 
 import (
 	"context"
-	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/tools/transaction"
-	"github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/repository/storage/postgres/dao"
+
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v4"
 
+	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/tools/transaction"
 	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/type/queryParameter"
 	"github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/domain/contact"
+	"github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/repository/storage/postgres/dao"
 )
 
 func (r *Repository) CreateContact(contacts ...*contact.Contact) ([]*contact.Contact, error) {
@@ -22,7 +23,7 @@ func (r *Repository) CreateContact(contacts ...*contact.Contact) ([]*contact.Con
 		err = transaction.Finish(ctx, t, err)
 	}(ctx, tx)
 
-	response, err := r.createContactTx(ctx, tx, contacts...)
+	response, err := r.CreateContactTx(ctx, tx, contacts...)
 	if err != nil {
 		return nil, err
 	}
@@ -30,7 +31,7 @@ func (r *Repository) CreateContact(contacts ...*contact.Contact) ([]*contact.Con
 	return response, nil
 }
 
-func (r *Repository) createContactTx(ctx context.Context, tx pgx.Tx, contacts ...*contact.Contact) ([]*contact.Contact, error) {
+func (r *Repository) CreateContactTx(ctx context.Context, tx pgx.Tx, contacts ...*contact.Contact) ([]*contact.Contact, error) {
 	if len(contacts) == 0 {
 		return []*contact.Contact{}, nil
 	}
