@@ -1,8 +1,10 @@
 package http
 
 import (
+	"github.com/ChristinaFomenko/slurm-clean-architecture/pkg/type/logger"
 	"strings"
 
+	ginzap "github.com/gin-contrib/zap"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 
@@ -26,6 +28,12 @@ func (d *Delivery) initRouter() *gin.Engine {
 	}
 
 	var router = gin.New()
+
+	router.Use(Tracer())
+
+	// Logs all panic to error log
+	//   - stack means whether output the stack info.
+	router.Use(ginzap.RecoveryWithZap(logger.GetLogger(), true))
 
 	d.routerDocs(router.Group("/docs"))
 

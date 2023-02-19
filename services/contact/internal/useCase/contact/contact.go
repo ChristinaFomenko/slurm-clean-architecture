@@ -35,6 +35,8 @@ func (uc *UseCase) Delete(ctx context.Context, ID uuid.UUID) error {
 }
 
 func (uc *UseCase) List(ctx context.Context, parameter queryParameter.QueryParameter) ([]*contact.Contact, error) {
+	//span, ctx := opentracing.StartSpanFromContext(ctx, "List")
+	//defer span.Finish()
 	return uc.adapterStorage.ListContact(ctx, parameter)
 }
 
@@ -43,5 +45,7 @@ func (uc *UseCase) ReadByID(ctx context.Context, ID uuid.UUID) (response *contac
 }
 
 func (uc *UseCase) Count(ctx context.Context) (uint64, error) {
+	//span, ctx := opentracing.StartSpanFromContext(ctx, "Count")
+	//defer span.Finish()
 	return uc.adapterStorage.CountContact(ctx)
 }
