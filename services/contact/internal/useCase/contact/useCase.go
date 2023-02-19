@@ -1,7 +1,9 @@
 package contact
 
 import (
+	log "github.com/ChristinaFomenko/slurm-clean-architecture/pkg/type/logger"
 	"github.com/ChristinaFomenko/slurm-clean-architecture/services/contact/internal/useCase/adapters/storage"
+	"go.uber.org/zap"
 )
 
 type UseCase struct {
@@ -22,5 +24,6 @@ func New(storage storage.Contact, options Options) *UseCase {
 func (uc *UseCase) SetOptions(options Options) {
 	if uc.options != options {
 		uc.options = options
+		log.Info("set new options", zap.Any("options", uc.options))
 	}
 }
